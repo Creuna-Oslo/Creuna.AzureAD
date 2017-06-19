@@ -38,7 +38,7 @@ namespace Creuna.AzureAD.Configuration.Episerver
         protected IContentEvents ContentEvents { get; }
         protected ICustomVirtualRolesWatcher RolesWatcher { get; }
 
-        protected virtual string ConfigurationKey => "AzureAD.SettingsPageId";
+        protected virtual string ConfigurationKey => "Creuna.AzureAD.SettingsPageId";
 
         protected virtual int SettingsPageIdConfiguration
         {
@@ -115,7 +115,7 @@ namespace Creuna.AzureAD.Configuration.Episerver
             return result;
         }
 
-        public virtual string DefaultSettingsPageName => ConfigurationManager.AppSettings["AzureAD.DefaultSettingsPageName"].NullIfEmpty() ?? "Azure AD Security Settings";
+        public virtual string DefaultSettingsPageName => ConfigurationManager.AppSettings["Creuna.AzureAD.DefaultSettingsPageName"].NullIfEmpty() ?? "Azure AD Security Settings";
         public virtual ContentReference DefaultSettingsParent { get; } = ContentReference.RootPage;
 
 

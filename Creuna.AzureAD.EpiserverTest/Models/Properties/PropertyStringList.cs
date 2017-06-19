@@ -64,6 +64,7 @@ namespace Creuna.AzureAD.EpiserverTest.Models.Properties
             }
         }
 
+        [Obsolete("Use IPropertyControlFactory to create property controls")]
         public override IPropertyControl CreatePropertyControl()
         {
             //No support for legacy edit mode

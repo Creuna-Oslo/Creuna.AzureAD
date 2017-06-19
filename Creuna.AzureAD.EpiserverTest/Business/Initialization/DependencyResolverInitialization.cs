@@ -16,9 +16,9 @@ namespace Creuna.AzureAD.EpiserverTest.Business.Initialization
     {
         public void ConfigureContainer(ServiceConfigurationContext context)
         {
-            context.Container.Configure(ConfigureContainer);
+            context.StructureMap().Configure(ConfigureContainer);
 
-            DependencyResolver.SetResolver(new StructureMapDependencyResolver(context.Container));
+            DependencyResolver.SetResolver(new StructureMapDependencyResolver(context.StructureMap()));
         }
 
         private static void ConfigureContainer(ConfigurationExpression container)

@@ -2,6 +2,7 @@ using Creuna.AzureAD.Configuration;
 using Creuna.AzureAD.Configuration.ConfigFile;
 using Creuna.AzureAD.Configuration.Episerver;
 using Creuna.AzureAD.Contracts;
+using Creuna.AzureAD.Utils.FeatureToggles;
 using StructureMap.Configuration.DSL;
 
 namespace Creuna.AzureAD
@@ -25,9 +26,18 @@ namespace Creuna.AzureAD
     {
         public AdGroupsToRolesMapperRegistry()
         {
-            For<AzureAdSecurityConfigurationFileProvider>().Singleton();
-            For<IAzureAdSecuritySettingsProvider>().Singleton().Use(ctx => ctx.GetInstance<AzureAdSecurityConfigurationFileProvider>());
-            For<ICustomVirtualRolesProvider>().Singleton().Use(ctx => ctx.GetInstance<AzureAdSecurityConfigurationFileProvider>());
+            if (!new FeatureToggleDisableAzureAD().FeatureEnabled)
+            {
+
+                if (new FeatureToggleForseJsonConfig().FeatureEnabled)
+                {
+                    IncludeRegistry<JsonConfigAdGroupsToRolesMapperRegistry>();
+                }
+                else
+                {
+                    IncludeRegistry<EpiserverAdGroupsToRolesMapperRegistry>();
+                }
+            }
         }
     }
 
@@ -40,6 +50,16 @@ namespace Creuna.AzureAD
                 .Ctor<IAzureAdSecuritySettingsProvider>().Is<AzureAdSecurityConfigurationFileProvider>();
             For<IAzureAdSecuritySettingsProvider>().Singleton().Use(ctx => ctx.GetInstance<AzureAdSecurityEpiserverProvider>());
             For<ICustomVirtualRolesProvider>().Singleton().Use(ctx => ctx.GetInstance<AzureAdSecurityEpiserverProvider>());
+        }
+    }
+
+    public class JsonConfigAdGroupsToRolesMapperRegistry : AdGroupsToRolesMapperRegistryBase
+    {
+        public JsonConfigAdGroupsToRolesMapperRegistry()
+        {
+            For<AzureAdSecurityConfigurationFileProvider>().Singleton();
+            For<IAzureAdSecuritySettingsProvider>().Singleton().Use(ctx => ctx.GetInstance<AzureAdSecurityConfigurationFileProvider>());
+            For<ICustomVirtualRolesProvider>().Singleton().Use(ctx => ctx.GetInstance<AzureAdSecurityConfigurationFileProvider>());
         }
     }
 }

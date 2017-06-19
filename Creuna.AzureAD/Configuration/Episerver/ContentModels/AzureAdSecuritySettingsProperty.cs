@@ -21,7 +21,7 @@ namespace Creuna.AzureAD.Configuration.Episerver.ContentModels
         public JsonStringGenericEditorDescriptor()
         {
             // this.ClientEditingClass = "epi/shell/widget/ValidationTextarea";
-            this.ClientEditingClass = "creuna/editors/JsonString";
+            this.ClientEditingClass = "creunaAzureAD/editors/JsonString";
             this.Style = "width:582px;";
         }
 

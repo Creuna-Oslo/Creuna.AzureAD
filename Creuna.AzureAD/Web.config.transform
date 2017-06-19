@@ -1,0 +1,41 @@
+﻿<?xml version="1.0"?>
+<configuration>
+  <appSettings>
+    <add key="owin:AutomaticAppStartup" value="true"/>
+    
+    <add key="Creuna.AzureAD.ClientId" value="83a263ec-fca6-4dbc-b46f-027bd583e461" />
+    <add key="Creuna.AzureAD.Tenant" value="CreunaCloud.onmicrosoft.com" />
+    <add key="Creuna.AzureAD.AADInstance" value="https://login.microsoftonline.com/{0}" />
+    <add key="Creuna.AzureAD.PostLogoutRedirectUri" value="http://localhost:57245/" />
+    
+    <add key="Creuna.AzureAD.DefaultSettingsPageName" value="Azure AD Security Settings" />
+    <add key="Creuna.AzureAD.JsonConfig" value="~/configs/security.json" />
+    <add key="Creuna.AzureAD.SettingsPageId" />
+
+    <add key="Creuna.AzureAD.ForceJsonConfig" value="false" />
+    <add key="Creuna.AzureAD.Disabled" value="false" />
+  </appSettings>
+
+  <system.web>
+    <authentication mode="None" />
+    <membership>
+      <providers>
+        <clear />
+      </providers>
+    </membership>
+    <roleManager enabled="false">
+      <providers>
+        <clear />
+      </providers>
+    </roleManager>
+  </system.web>
+
+  <episerver.framework>
+    <securityEntity>
+      <providers>
+        <add name="SynchronizingProvider" type ="EPiServer.Security.SynchronizingRolesSecurityEntityProvider, EPiServer"/>
+      </providers>
+    </securityEntity>
+    <virtualRoles addClaims="true" />
+  </episerver.framework>
+</configuration>

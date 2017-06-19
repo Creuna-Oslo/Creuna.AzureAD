@@ -1,7 +1,10 @@
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Web.Hosting;
 using Creuna.AzureAD.Contracts;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 
 namespace Creuna.AzureAD.Configuration.ConfigFile
@@ -10,7 +13,20 @@ namespace Creuna.AzureAD.Configuration.ConfigFile
     {
         private AzureAdSecuritySettings _settings;
 
-        protected virtual string ConfigFilePath => HostingEnvironment.MapPath("~/configs/security.json");
+        protected virtual string ConfigFilePath => MakePath(ConfigurationManager.AppSettings["Creuna.AzureAD.JsonConfig"] ?? "~/configs/security.json");
+
+        protected virtual string MakePath([NotNull] string path)
+        {
+            if (path == null) throw new ArgumentNullException(nameof(path));
+
+            if (path.StartsWith("~/", StringComparison.InvariantCultureIgnoreCase) ||
+                path.StartsWith("/", StringComparison.InvariantCultureIgnoreCase))
+            {
+                return HostingEnvironment.MapPath(path);
+            }
+
+            return path;
+        }
 
         protected virtual AzureAdSecuritySettings Settings
         {

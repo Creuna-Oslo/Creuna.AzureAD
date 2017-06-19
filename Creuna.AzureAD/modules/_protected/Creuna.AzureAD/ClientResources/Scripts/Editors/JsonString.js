@@ -46,8 +46,6 @@ function (
                             <span>${helptext}</span>\
                         </div>',
 
-        helptext: "todo: get helptext from code",
-
         intermediateChanges: false,
 
         value: null,

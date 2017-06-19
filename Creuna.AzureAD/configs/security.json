@@ -1,0 +1,20 @@
+﻿{
+  "roles": [ "CmsTester" ],
+  "groups": [
+    {
+      "uid": "8ffc4e95-6621-4562-b944-fc8f55d14857",
+      "name": "kha-no-team",
+      "roles": [ "WebAdmins", "CmsAdmins" ]
+    },
+    {
+      "uid": "f5a72cea-f924-4096-8168-4c562178ddc9",
+      "name": "osl-Tech",
+      "roles": [ "WebAdmins", "CmsAdmins" ]
+    },
+    {
+      "uid": "02f6e0db-b7b7-4518-b555-5cb306a3a4c8",
+      "name": "kha-Employees",
+      "roles": [ "CmsEditors", "WebEditors", "CmsTester" ]
+    }
+  ]
+}
