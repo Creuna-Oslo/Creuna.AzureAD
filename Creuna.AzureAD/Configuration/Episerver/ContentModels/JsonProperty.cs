@@ -1,7 +1,7 @@
 ﻿using JetBrains.Annotations;
 using Newtonsoft.Json;
 
-namespace EEN.Web.AzureAD.Configuration.Episerver.ContentModels
+namespace Creuna.AzureAD.Configuration.Episerver.ContentModels
 {
     public class JsonProperty<TValue> : TypedStringBasedProperty<TValue> 
         where TValue : class

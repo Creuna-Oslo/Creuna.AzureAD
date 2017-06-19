@@ -3,7 +3,7 @@ using EPiServer.PlugIn;
 using EPiServer.Shell.ObjectEditing;
 using EPiServer.Shell.ObjectEditing.EditorDescriptors;
 
-namespace EEN.Web.AzureAD.Configuration.Episerver.ContentModels
+namespace Creuna.AzureAD.Configuration.Episerver.ContentModels
 {
     [EditorHint("JsonString")]
     [PropertyDefinitionTypePlugIn(DisplayName = "Azure AD Security Settings", 

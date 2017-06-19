@@ -2,7 +2,7 @@
 using EPiServer.Core;
 using JetBrains.Annotations;
 
-namespace EEN.Web.AzureAD.Configuration.Episerver.ContentModels
+namespace Creuna.AzureAD.Configuration.Episerver.ContentModels
 {
     public abstract class TypedStringBasedProperty<TValue> : PropertyLongString where TValue : class
     {

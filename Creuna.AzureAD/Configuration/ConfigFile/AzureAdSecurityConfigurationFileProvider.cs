@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Web.Hosting;
+using Creuna.AzureAD.Contracts;
 using Newtonsoft.Json;
 
-namespace EEN.Web.AzureAD.Configuration.ConfigFile
+namespace Creuna.AzureAD.Configuration.ConfigFile
 {
     public class AzureAdSecurityConfigurationFileProvider : IAzureAdSecuritySettingsProvider, ICustomVirtualRolesProvider
     {

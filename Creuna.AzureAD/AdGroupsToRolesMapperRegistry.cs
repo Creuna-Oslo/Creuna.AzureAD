@@ -1,9 +1,10 @@
-using EEN.Web.AzureAD.Configuration;
-using EEN.Web.AzureAD.Configuration.ConfigFile;
-using EEN.Web.AzureAD.Configuration.Episerver;
+using Creuna.AzureAD.Configuration;
+using Creuna.AzureAD.Configuration.ConfigFile;
+using Creuna.AzureAD.Configuration.Episerver;
+using Creuna.AzureAD.Contracts;
 using StructureMap.Configuration.DSL;
 
-namespace EEN.Web.AzureAD
+namespace Creuna.AzureAD
 {
     public class AdGroupsToRolesMapperRegistryBase : Registry
     {

@@ -1,6 +1,6 @@
 using System.Security.Claims;
 
-namespace EEN.Web.AzureAD
+namespace Creuna.AzureAD.Contracts
 {
     public interface IIdentityUpdater
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace EEN.Web.AzureAD
+namespace Creuna.AzureAD
 {
     public class AdGroup
     {

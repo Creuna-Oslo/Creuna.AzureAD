@@ -1,6 +1,6 @@
 using EPiServer.Shell;
 
-namespace EEN.Web.AzureAD.Configuration.Episerver.ContentModels
+namespace Creuna.AzureAD.Configuration.Episerver.ContentModels
 {
     [UIDescriptorRegistration]
     public class AzureAdSecuritySettingsPageUiDescriptor : UIDescriptor<AzureAdSecuritySettingsPage>

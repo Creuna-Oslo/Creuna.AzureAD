@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Globalization;
-using System.Linq;
 using System.IdentityModel.Tokens;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
-using System.Web.Helpers;
-using EEN.Web.AzureAD;
+using Creuna.AzureAD.Contracts;
 using EPiServer.Security;
 using EPiServer.ServiceLocation;
-using Microsoft.Owin;
 using Microsoft.Owin.Extensions;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
@@ -19,7 +15,7 @@ using Microsoft.Owin.Security.Notifications;
 using Microsoft.Owin.Security.OpenIdConnect;
 using Owin;
 
-namespace EEN.Web
+namespace Creuna.AzureAD.content.App_Start
 {
     public partial class Startup
     {

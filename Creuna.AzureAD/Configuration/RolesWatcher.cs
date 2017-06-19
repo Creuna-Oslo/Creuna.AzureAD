@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
+using Creuna.AzureAD.Contracts;
 using EPiServer.Security;
 
-namespace EEN.Web.AzureAD.Configuration
+namespace Creuna.AzureAD.Configuration
 {
     public class RolesWatcher : ICustomVirtualRolesWatcher
     {

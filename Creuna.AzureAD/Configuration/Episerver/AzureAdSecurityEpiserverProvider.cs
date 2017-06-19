@@ -2,7 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
-using EEN.Web.AzureAD.Configuration.Episerver.ContentModels;
+using Creuna.AzureAD.Configuration.Episerver.ContentModels;
+using Creuna.AzureAD.Contracts;
 using EPiServer;
 using EPiServer.Core;
 using EPiServer.DataAccess;
@@ -10,7 +11,7 @@ using EPiServer.Logging.Compatibility;
 using EPiServer.Security;
 using JetBrains.Annotations;
 
-namespace EEN.Web.AzureAD.Configuration.Episerver
+namespace Creuna.AzureAD.Configuration.Episerver
 {
     public class AzureAdSecurityEpiserverProvider : IAzureAdSecuritySettingsProvider, ICustomVirtualRolesProvider
     {

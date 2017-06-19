@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Security.Claims;
+using Creuna.AzureAD.Contracts;
 using JetBrains.Annotations;
 
-namespace EEN.Web.AzureAD
+namespace Creuna.AzureAD
 {
     public class IdentityUpdater : IIdentityUpdater
     {

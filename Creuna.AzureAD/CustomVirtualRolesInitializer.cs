@@ -1,8 +1,9 @@
 using System.Threading;
+using Creuna.AzureAD.Contracts;
 using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
 
-namespace EEN.Web.AzureAD
+namespace Creuna.AzureAD
 {
     [ModuleDependency(typeof(EPiServer.Web.InitializationModule))]
     public class CustomVirtualRolesInitializer : IInitializableModule

@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using EEN.Web;
+﻿using Creuna.AzureAD.content.App_Start;
 using Microsoft.Owin;
 using Owin;
 
 [assembly: OwinStartup(typeof(Startup))]
 
-namespace EEN.Web
+namespace Creuna.AzureAD.content.App_Start
 {
     public partial class Startup
     {

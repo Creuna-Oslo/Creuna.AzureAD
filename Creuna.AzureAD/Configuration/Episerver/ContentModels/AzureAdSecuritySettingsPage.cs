@@ -2,7 +2,7 @@
 using EPiServer.Core;
 using EPiServer.DataAnnotations;
 
-namespace EEN.Web.AzureAD.Configuration.Episerver.ContentModels
+namespace Creuna.AzureAD.Configuration.Episerver.ContentModels
 {
     [ContentType(DisplayName = "Azure AD Security settings",
         Description = "Azure AD Security settings",

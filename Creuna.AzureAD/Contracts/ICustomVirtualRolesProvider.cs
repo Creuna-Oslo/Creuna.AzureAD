@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using JetBrains.Annotations;
 
-namespace EEN.Web.AzureAD
+namespace Creuna.AzureAD.Contracts
 {
     public interface ICustomVirtualRolesProvider
     {

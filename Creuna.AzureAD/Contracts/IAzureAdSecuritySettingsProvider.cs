@@ -1,6 +1,6 @@
 using JetBrains.Annotations;
 
-namespace EEN.Web.AzureAD
+namespace Creuna.AzureAD.Contracts
 {
     public interface IAzureAdSecuritySettingsProvider
     {
