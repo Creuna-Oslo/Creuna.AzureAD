@@ -12,7 +12,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes>
-      1.0.0 - initial release. 
+      1.0.2 - initial release. 
     </releaseNotes>
     <copyright>Copyright Creuna (C) 2017</copyright>
     <tags>Creuna EPiServer Azure AD OpenID security</tags>

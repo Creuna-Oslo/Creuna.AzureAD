@@ -1,5 +1,6 @@
 using System.Threading;
 using Creuna.AzureAD.Contracts;
+using Creuna.AzureAD.Utils.FeatureToggles;
 using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
 
@@ -16,12 +17,13 @@ namespace Creuna.AzureAD
 
         public virtual void Initialize(InitializationEngine context)
         {
-            Thread.Sleep(15000);
-            System.Diagnostics.Debugger.Break();
-            var customVirtualRolesProvider = Locate<ICustomVirtualRolesProvider>(context);
-            customVirtualRolesProvider.Initialize();
-            var rolesWatcher = Locate<ICustomVirtualRolesWatcher>(context);
-            rolesWatcher.Initialize(customVirtualRolesProvider.GetCustomRoles());
+            if (!new FeatureToggleDisableAzureAD().FeatureEnabled)
+            {
+                var customVirtualRolesProvider = Locate<ICustomVirtualRolesProvider>(context);
+                customVirtualRolesProvider.Initialize();
+                var rolesWatcher = Locate<ICustomVirtualRolesWatcher>(context);
+                rolesWatcher.Initialize(customVirtualRolesProvider.GetCustomRoles());
+            }
         }
 
         public void Uninitialize(InitializationEngine context)

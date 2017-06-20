@@ -1,5 +1,4 @@
-﻿using Creuna.AzureAD.content.App_Start;
-using Microsoft.Owin;
+﻿using Microsoft.Owin;
 using Owin;
 
 [assembly: OwinStartup(typeof($rootnamespace$.Startup))]
