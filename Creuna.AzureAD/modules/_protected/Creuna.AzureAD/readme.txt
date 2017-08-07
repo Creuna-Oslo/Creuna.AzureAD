@@ -7,7 +7,9 @@ Creuna.AzureAD Quickstart
 	- Creuna.AzureAD.Tenant
 	- Creuna.AzureAD.AADInstance
 	- Creuna.AzureAD.PostLogoutRedirectUri
-
+Update reply URLs to include $(site) $(site)/episerver/ $(site)/episerver/cms/ for each episerver site 
+(i.e. http://mysite.local/episerver/, http://mysite.local/episerver/cms/) 
+Unfortunately reply urls are case sensitive, so $(site)/EPiServer/ and $(site)/EPiServer/CMS/ should also be added
 
 NOTE: the following 2 steps are not needed if you have an Azure Premium subscription and manage roles in the Azure Portal
 3. update your app manifest to have 
@@ -42,6 +44,37 @@ NOTE: the following 2 steps are not needed if you have an Azure Premium subscrip
         public void Uninitialize(EPiServer.Framework.Initialization.InitializationEngine context)
         { }
     }
+
+6. Make sure authentication, roleManager and membership are turned off for AzureAD
+
+	  <system.web>
+		<authentication mode="None" />
+		<membership>
+		  <providers>
+			<clear />
+		  </providers>
+		</membership>
+		<roleManager enabled="false">
+		  <providers>
+			<clear />
+		  </providers>
+		</roleManager>
+	  </system.web>
+
+7. And episerver virtual roles configured with addClaims="true"
+
+  <virtualRoles addClaims="true">
+    <providers>
+      <add name="Administrators" type="EPiServer.Security.WindowsAdministratorsRole, EPiServer.Framework" />
+      <add name="Everyone" type="EPiServer.Security.EveryoneRole, EPiServer.Framework" />
+      <add name="Authenticated" type="EPiServer.Security.AuthenticatedRole, EPiServer.Framework" />
+      <add name="Anonymous" type="EPiServer.Security.AnonymousRole, EPiServer.Framework" />
+      <add name="CmsAdmins" type="EPiServer.Security.MappedRole, EPiServer.Framework" roles="WebAdmins, Administrators" mode="Any" />
+      <add name="CmsEditors" type="EPiServer.Security.MappedRole, EPiServer.Framework" roles="WebEditors" mode="Any" />
+      <add name="Creator" type="EPiServer.Security.CreatorRole, EPiServer" />
+      <add name="PackagingAdmins" type="EPiServer.Security.MappedRole, EPiServer.Framework" roles="WebAdmins, Administrators" mode="Any" />
+    </providers>
+  </virtualRoles>
 
 
 App settings

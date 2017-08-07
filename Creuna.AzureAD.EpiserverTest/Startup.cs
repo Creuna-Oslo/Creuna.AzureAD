@@ -11,12 +11,15 @@ using Owin;
 
 namespace Creuna.AzureAD.EpiserverTest
 {
-    public class Startup
+    public partial class Startup
     {
-
         public void Configuration(IAppBuilder app)
         {
+            ConfigureAuth(app);
+        }
 
+        private void ConfigureNoADAuth(IAppBuilder app)
+        {
             // Add CMS integration for ASP.NET Identity
             app.AddCmsAspNetIdentity<ApplicationUser>();
 
@@ -43,6 +46,7 @@ namespace Creuna.AzureAD.EpiserverTest
                         regenerateIdentity: (manager, user) => manager.GenerateUserIdentityAsync(user))
                 }
             });
+
         }
     }
 }

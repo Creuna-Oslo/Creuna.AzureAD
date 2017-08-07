@@ -7,24 +7,24 @@ using EPiServer.ServiceLocation;
 
 namespace Creuna.AzureAD.EpiserverTest
 {
-    //[InitializableModule]
-    //[ModuleDependency(typeof(ServiceContainerInitialization))]
-    //public class AdGroupsToRolesMapperInitializer : IConfigurableModule
-    //{
-    //    public void ConfigureContainer(ServiceConfigurationContext context)
-    //    {
-    //        var container = context.StructureMap();
+    [InitializableModule]
+    [ModuleDependency(typeof(ServiceContainerInitialization))]
+    public class AdGroupsToRolesMapperInitializer : IConfigurableModule
+    {
+        public void ConfigureContainer(ServiceConfigurationContext context)
+        {
+            var container = context.StructureMap();
 
-    //        container.Configure(x => x.AddRegistry<AdGroupsToRolesMapperRegistry>());
-    //    }
+            container.Configure(x => x.AddRegistry<AdGroupsToRolesMapperRegistry>());
+        }
 
-    //    public void Initialize(EPiServer.Framework.Initialization.InitializationEngine context)
-    //    { }
+        public void Initialize(EPiServer.Framework.Initialization.InitializationEngine context)
+        { }
 
-    //    public void Preload(string[] parameters)
-    //    { }
+        public void Preload(string[] parameters)
+        { }
 
-    //    public void Uninitialize(EPiServer.Framework.Initialization.InitializationEngine context)
-    //    { }
-    //}
+        public void Uninitialize(EPiServer.Framework.Initialization.InitializationEngine context)
+        { }
+    }
 }
