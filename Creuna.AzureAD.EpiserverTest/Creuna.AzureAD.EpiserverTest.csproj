@@ -59,8 +59,8 @@
     <Reference Include="Castle.Windsor, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <HintPath>..\packages\Castle.Windsor.4.1.0\lib\net45\Castle.Windsor.dll</HintPath>
     </Reference>
-    <Reference Include="Creuna.AzureAD, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Creuna.AzureAD.1.0.3\lib\net461\Creuna.AzureAD.dll</HintPath>
+    <Reference Include="Creuna.AzureAD, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Creuna.AzureAD.2.0.0-beta1\lib\net461\Creuna.AzureAD.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
@@ -239,7 +239,6 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="NuGet.Core, Version=2.7.41101.299, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\NuGet.Core.2.7.2\lib\net40-Client\NuGet.Core.dll</HintPath>
@@ -356,7 +355,7 @@
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ItemGroup>
-    <Compile Include="App_Start\Class1.cs" />
+    <Compile Include="App_Start\AdGroupsToRolesMapperInitializer.cs" />
     <Compile Include="Business\AdministratorRegistrationPage.cs" />
     <Compile Include="Business\Channels\DisplayResolutionBase.cs" />
     <Compile Include="Business\Channels\DisplayResolutions.cs" />
@@ -507,8 +506,8 @@
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="App_Data\DefaultSiteContent.episerverdata" />
-    <Content Include="configs\security.json" />
     <Content Include="App_Data\GeoLiteCity.dat" />
+    <Content Include="configs\security.json" />
     <None Include="EPiServerLog.config" />
     <Content Include="packages.config" />
     <Content Include="Views\SearchPage\Index.cshtml" />
@@ -552,7 +551,6 @@
     <Content Include="Views\ContactBlock\Index.cshtml" />
     <Content Include="Views\ArticlePage\Index.cshtml" />
     <Content Include="module.config" />
-    <Content Include="modules\_protected\Creuna.AzureAD\module.config" />
     <Content Include="modules\_protected\EPiServer.Cms.TinyMce\web.config" />
     <Content Include="modules\_protected\EPiServer.Cms.TinyMce\EPiServer.Cms.TinyMce.zip" />
     <Content Include="modules\_protected\Shell\web.config" />
@@ -564,6 +562,7 @@
     <Content Include="modules\_protected\EPiServer.XForms\web.config" />
     <Content Include="modules\_protected\EPiServer.XForms\EPiServer.XForms.zip" />
     <Content Include="modules\_protected\EPiServer.Search.Cms\module.config" />
+    <Content Include="modules\_protected\Creuna.AzureAD\module.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
