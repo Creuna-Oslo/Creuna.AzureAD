@@ -45,6 +45,51 @@ NOTE: the following 2 steps are not needed if you have an Azure Premium subscrip
         { }
     }
 
+    public class AdGroupsToRolesMapperRegistry : Registry
+    {
+        public AdGroupsToRolesMapperRegistry()
+        {
+            if (!new FeatureToggleDisableAzureAD().FeatureEnabled)
+            {
+
+                if (new FeatureToggleForseJsonConfig().FeatureEnabled)
+                {
+                    JsonConfigAdGroupsToRolesMapper();
+                }
+                else
+                {
+                    EpiserverAdGroupsToRolesMapper();
+                }
+            }
+        }
+
+        private void JsonConfigAdGroupsToRolesMapper()
+        {
+            CommonComponents();
+
+            For<AzureAdSecurityConfigurationFileProvider>().Singleton();
+            For<IAzureAdSecuritySettingsProvider>().Singleton().Use(ctx => ctx.GetInstance<AzureAdSecurityConfigurationFileProvider>());
+            For<ICustomVirtualRolesProvider>().Singleton().Use(ctx => ctx.GetInstance<AzureAdSecurityConfigurationFileProvider>());
+        }
+
+        private void EpiserverAdGroupsToRolesMapper()
+        {
+            CommonComponents();
+
+            For<AzureAdSecurityConfigurationFileProvider>().Singleton();
+            For<AzureAdSecurityEpiserverProvider>().Singleton().Use<AzureAdSecurityEpiserverProvider>()
+                .Ctor<IAzureAdSecuritySettingsProvider>().Is<AzureAdSecurityConfigurationFileProvider>();
+            For<IAzureAdSecuritySettingsProvider>().Singleton().Use(ctx => ctx.GetInstance<AzureAdSecurityEpiserverProvider>());
+            For<ICustomVirtualRolesProvider>().Singleton().Use(ctx => ctx.GetInstance<AzureAdSecurityEpiserverProvider>());
+        }
+
+        private void CommonComponents()
+        {
+            For<IIdentityUpdater>().Singleton().Use<AdGroupsToRolesIdentityUpdater>();
+            For<ICustomVirtualRolesWatcher>().Singleton().Use<RolesWatcher>();
+        }
+    }
+
 6. Make sure authentication, roleManager and membership are turned off for AzureAD
 
 	  <system.web>

@@ -41,7 +41,7 @@ namespace Creuna.AzureAD.EpiserverTest
             if (new FeatureToggleDisableAzureAD().FeatureEnabled)
             {
                 // feel free to call your own method here
-                ConfigureNoADAuth(app);
+                return;
             }
             else
             {
